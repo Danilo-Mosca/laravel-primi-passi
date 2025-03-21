@@ -11,11 +11,15 @@ Route::get('/service-and-products', function () {
 })->name('service-products');
 
 Route::get('/about-us', function () {
-    return view('about-us', ["message" => "Sei nella pagina Chi siamo"]);
+    // Esempio con passaggio di variabile:
+    $message = "Sei nella pagina Chi siamo";
+    return view('about-us', ["message" => $message]);
 })->name('about');
 
 Route::get('/contact', function () {
-    return view('contacts', ['message' => 'Sei nella pagina Contatti']);
+    // Come ultimo esempio al posto dell'array associativo (chiave/valore) utilizzo un altro modo la funzione compact(). Questa funzione come parametri vuole soltanto il nome della variabile in formato stringa, quindi solo "message" tra parentesi:
+    $message = 'Sei nella pagina Contatti';
+    return view('contacts', compact("message"));
 })->name('contacts');
 
 // Rotta di fallback (acchiappatutto) che intercetta tutte le richieste che non sono state matchate
